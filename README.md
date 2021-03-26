@@ -8,3 +8,5 @@ don't use prnt.sc, here is why
 ```2) install lxml with for example pip, like this: "pip install lxml"```
 
 ```3) python scraper.py [amount_of_images]```
+
+![Whoopsie](whoops.gif)
