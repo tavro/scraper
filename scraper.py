@@ -30,10 +30,13 @@ def download(url):
     name = "prnt_" + url[-6:] + ".png"
     req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
     soup = BeautifulSoup(urlopen(req).read(), "lxml")
-    img = soup.find("img", {"class": "no-click screenshot-image"}).get("src")
-    if not img.startswith("https://image.prntscr.com/image/"):
+    img = soup.find("img", {"class": "no-click screenshot-image"})
+    if img is None:
         return download(get_urls(1)[0])
-    save_on_disk(img, name, os.getcwd() + "/")
+    src = img.get("src")
+    if not src.startswith("https://image.prntscr.com/image/"):
+        return download(get_urls(1)[0])
+    save_on_disk(src, name, os.getcwd() + "/")
 
 
 def save_on_disk(img, name, dir):
