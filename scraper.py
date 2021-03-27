@@ -1,20 +1,24 @@
 import lxml
 import os
 import sys
-
+import string
+import random
 
 from bs4 import BeautifulSoup
-from random import choice
 from string import ascii_lowercase
 from urllib.request import Request, urlopen
+
+done = 0
+total = 0
 
 
 def main():
     """
     Loops through randomly generated urls and saves their content on disk
     """
-    amount = int(sys.argv[1])
-    urls = get_urls(amount)
+    global total
+    total = int(sys.argv[1])
+    urls = get_urls(total)
     for url in urls:
         download(url)
 
@@ -36,11 +40,13 @@ def save_on_disk(img, name, dir):
     """
     Saves image on disk with given name
     """
-    print(f"Downloading {name}...")
+    global done
+    done += 1
+    print(f"Downloading {name}...  ({done}/{total})")
     req = Request(img, headers={"User-Agent": "Mozilla/5.0"})
     with open(dir + name, "wb") as f:
         f.write(urlopen(req).read())
-    print(f"Successfully downloaded {name}!\n")
+    print(f"Successfully downloaded {name}! ({done}/{total})\n")
 
 
 def get_urls(amount):
@@ -48,8 +54,8 @@ def get_urls(amount):
     Generates a list of random prnt.sc URLs
     """
     urls = []
-    for x in range(amount):
-        noise = "".join([choice(ascii_lowercase) for y in range(2)] + [str(choice(range(10))) for z in range(4)])
+    for _ in range(amount):
+        noise = "".join(random.choices(string.ascii_lowercase + string.digits, k=6))
         url = "https://prnt.sc/" + noise
         if url not in urls:
             urls.append(url)
