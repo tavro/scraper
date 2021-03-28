@@ -9,4 +9,4 @@ don't use prnt.sc, here is why
 
 ```3) python scraper.py [amount_of_images]```
 
-![Whoopsie](whoops.gif)
+![Whoopsie](preview_1.gif)
