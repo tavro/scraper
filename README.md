@@ -1,5 +1,7 @@
 # scraper :computer:
-don't use prnt.sc, here is why
+prnt.sc is a website for hosting screenshots taken with Lightshot. Since the url ids are not random you could easily run through every url and download the picture and that is exactly what this script does
+
+:heavy_exclamation_mark: I do not take any responsibility for people using this script in harmful ways. I am working on this project for fun & to learn. I recommend using some sort of image recognition ai to detect sensitive content such as bank details and pornography because you probably do not want to save that to disk since it's illegal :heavy_exclamation_mark:
 
 ### how to set up project :file_folder:
 
@@ -35,10 +37,10 @@ python scraper.py [amount_of_images]
 * slow (:no_entry: critical)
 
 ### contributions :trophy:
-* no one at this point
+* you could be on this list
 
 ### inspiration :recycle:
-* will be some people here soon
+* @sixtrains at Tiktok who inspired me to make this project
 
 ### communication :speech_balloon:
 :email: if you have any questions feel free to mail me at isakhorvath@gmail.com
